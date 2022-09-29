@@ -38,7 +38,7 @@ npx hardhat run ./scripts/deploy_splatter.ts
 ・それを utils/addresses にコピー
 ```
 
-### 手動デプロイ手順
+### 手動デプロイ手順（deploy_splatter.tsがエラーの時など）
 ```
 1. Vue/TypeScriptサービスを起動
 cd generative
