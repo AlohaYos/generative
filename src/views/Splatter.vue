@@ -46,6 +46,7 @@ export default defineComponent({
     console.log("*** chainId", network, tokenAddress);
     const images = ref<string[]>([]);
     const updateImages = () => {
+      // sampleColorsの色数でループ。その色colorをgenerateSVGImageへ渡してSVGイメージを生成している
       images.value = sampleColors.map((color) => generateSVGImage(color));
     };
     updateImages();

@@ -72,7 +72,39 @@ contract SplatterProvider is IAssetProvider, IERC165, Ownable {
     svgHelper = _svgHelper;
   }
 
+/// Propsの中にcount, length, dotが詰まっている
   function generatePoints(Randomizer.Seed memory _seed, Props memory _props) pure internal returns(Randomizer.Seed memory, ISVGHelper.Point[] memory) {
+
+    Randomizer.Seed memory seed = _seed;
+    uint count;
+    (seed, count) = seed.randomize(100, 90);
+    ISVGHelper.Point[] memory points = new ISVGHelper.Point[](count  + count /3 * 5);
+
+    uint r0 = 300;
+    int32 rto = 1024;
+    uint j = 0;
+
+    for (uint i = 0; i < count; i++) {
+      uint xx;
+      uint yy;
+      uint cc;
+      (seed, xx) = seed.randomize(r0, 100);
+      (seed, yy) = seed.randomize(r0, 100);
+      (seed, cc) = seed.randomize( 2, 100);
+      bool tf = true;
+      if(cc>0) tf = false;
+
+      points[j].x = int32(int(xx));
+      points[j].y = int32(int(yy));
+      points[j].c = tf;
+      points[j].r = rto;
+      j++;
+    }
+    return (seed, points);
+
+
+/*  
+    ISVGHelper.Point[] memory points = new ISVGHelper.Point[](_props.count  + _props.count /3 * 5);
     Randomizer.Seed memory seed = _seed;
     uint[] memory degrees = new uint[](_props.count);
     uint total;
@@ -85,7 +117,6 @@ contract SplatterProvider is IAssetProvider, IERC165, Ownable {
 
     uint r0 = 220;
     uint r1 = r0;
-    ISVGHelper.Point[] memory points = new ISVGHelper.Point[](_props.count  + _props.count /3 * 5);
     uint j = 0;
     for (uint i = 0; i < _props.count; i++) {
       {
@@ -141,6 +172,7 @@ contract SplatterProvider is IAssetProvider, IERC165, Ownable {
       }
     }
     return (seed, points);
+*/  
   }
 
   function generatePath(Randomizer.Seed memory _seed, Props memory _props) public view returns(Randomizer.Seed memory seed, bytes memory svgPart) {
