@@ -57,29 +57,33 @@ npx hardhat run ./scripts/deploy_splatter.ts --network goerli
 - Copy splatter_goerli.ts into utils/addresses folder.
 
 ### Manual deploy（in case deploy_splatter.ts got error）
-1. Deploy *.sol onto goerli test network manually as below.
+1. Select "Injected Provider - Metamask" at "ENVIRONMENT" selector of Deploy pane.
+2. Connect "ACCOUNT" to developer's Metamask.
+3. Select each "CONTRACT" and deploy *.sol to goerli test network manually as below.
 - SplatterProvider.sol
-  - args : nothing
+  - args :
+    - nothing
 - SplatterArtProvider.sol
-  - args : SplatterProvider address
+  - args :
+    - SplatterProvider address
 - SplatterToken.sol
   - args :
     - SplatterArtProvider address
     - Account address（MetaMask address）
     - OpenSea testnet Proxy（0xa5409ec958c83c3f309868babaca7c86dcb077c1）
-2. Copy these three contract addresses into util/addresses/splatter_goerli.ts as below.
+4. Copy these three contract addresses into util/addresses/splatter_goerli.ts as below. Each contract address will be displayed at "Deployed Contracts" section at the bottom of Deploy pane.
 ```
-　　　 export const addresses = {
-　　　　  splatterAddress:"0x967466...",
-　　　　  splatterArtAddress:"0xD9EeC3...",
-　　　　  splatterToken:"0xaBA061..."
-　　　}
+export const addresses = {
+  splatterAddress:"0x967466...",
+  splatterArtAddress:"0xD9EeC3...",
+  splatterToken:"0xaBA061..."
+}
 ```
 
 ## Mint
 
 ### Mint to OpenSea(testnet)
-Mint onto OpenSea testnet
+Mint to OpenSea testnet
 - Mint button： http://localhost:8080/splatter
 
 ## Check result
