@@ -34,3 +34,45 @@ npm install
 ```
 npx hardhat run ./scripts/deploy_splatter.ts
 ```
+
+### 手動デプロイ手順
+```
+1. Reactサーバを起動
+cd generative
+yarn run serve
+
+2. RemixIDEをローカルフォルダに繋ぐ
+remixd -s ./generative/ -u https://remix.ethereum.org/
+
+3. RemixIDEでsplatter.tsを編集して図形を作る
+　・確認 http://localhost:8080/splatter
+4. RemixIDEでSplatterProvider.solに移植する
+5. goerliテストネットワークに以下の順にデプロイする
+　・SplatterProvider.sol
+　・SplatterArtProvider.sol
+　・SplatterToken.sol
+6. テスト用OpenSeaにミントする
+　・Mintボタン： http://localhost:8080/splatterYos
+```
+
+### デプロイに必要な情報
+```
+SplatterProviderのデプロイに必要なもの
+・特になし
+
+SplatterArtProviderのデプロイに必要なもの
+・SplatterProvider
+
+SplatterTokenのデプロイに必要なもの
+・SplatterArtProvider
+・Account（MetaMaskアドレス）
+・テストOpenSea Proxy（0xa5409ec958c83c3f309868babaca7c86dcb077c1）
+
+これらを設定して以下の順にデプロイする。
+・SplatterProvider.sol
+・SplatterArtProvider.sol
+・SplatterToken.sol
+
+デプロイ完了したアドレスを
+util/addresses/splatter_goerli.tsにコピーする。
+```
