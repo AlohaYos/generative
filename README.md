@@ -30,7 +30,20 @@ cd contract
 npm install
 ```
 
-### Deployment
+## Coding
+
+### TypeScript and Solidity
+```
+1. RemixIDEをローカルフォルダに繋ぐ
+　remixd -s ./generative/ -u https://remix.ethereum.org/
+2. RemixIDEでsplatter.tsを編集して図形を作る
+　　・確認 http://localhost:8080/splatter
+3. RemixIDEでSplatterProvider.solに移植する
+```
+
+## Deployment
+
+### Deploy Script
 ```
 npx hardhat run ./scripts/deploy_splatter.ts
 ・deploy_splatter.ts を "--network goerli" オプション付きで走らせる
@@ -40,42 +53,31 @@ npx hardhat run ./scripts/deploy_splatter.ts
 
 ### 手動デプロイ手順（deploy_splatter.tsがエラーの時など）
 ```
-1. Vue/TypeScriptサービスを起動
-cd generative
-yarn run serve
-
-2. RemixIDEをローカルフォルダに繋ぐ
-remixd -s ./generative/ -u https://remix.ethereum.org/
-
-3. RemixIDEでsplatter.tsを編集して図形を作る
-　・確認 http://localhost:8080/splatter
-4. RemixIDEでSplatterProvider.solに移植する
-5. goerliテストネットワークに以下の順にデプロイする（上記Deploymentの手動版）
+1. goerliテストネットワークに以下の順にデプロイする（上記Deploy Scriptを手動で行う）
 　・SplatterProvider.sol
+　　　　SplatterProviderのデプロイに必要なもの
+　　　　　・特になし
 　・SplatterArtProvider.sol
+　　　　SplatterArtProviderのデプロイに必要なもの
+　　　　　・SplatterProviderアドレス
 　・SplatterToken.sol
-6. テスト用OpenSeaにミントする
+　　　　SplatterTokenのデプロイに必要なもの
+　　　　　・SplatterArtProviderアドレス
+　　　　　・Account（MetaMaskアドレス）
+　　　　　・テストOpenSea Proxy（0xa5409ec958c83c3f309868babaca7c86dcb077c1）
+2. デプロイ完了したコントラクトアドレスを
+　・util/addresses/splatter_goerli.tsにコピーする。
+　　　 export const addresses = {
+　　　　  splatterAddress:"0x967466...",
+　　　　  splatterArtAddress:"0xD9EeC3...",
+　　　　  splatterToken:"0xaBA061..."
+　　　}
+```
+
+## Mint
+
+### Mint to OpenSea(testnet)
+```
+2. テスト用OpenSeaにミントする
 　・Mintボタン： http://localhost:8080/splatterYos
-```
-
-### デプロイに必要な情報
-```
-SplatterProviderのデプロイに必要なもの
-・特になし
-
-SplatterArtProviderのデプロイに必要なもの
-・SplatterProvider
-
-SplatterTokenのデプロイに必要なもの
-・SplatterArtProvider
-・Account（MetaMaskアドレス）
-・テストOpenSea Proxy（0xa5409ec958c83c3f309868babaca7c86dcb077c1）
-
-これらを設定して以下の順にデプロイする。
-・SplatterProvider.sol
-・SplatterArtProvider.sol
-・SplatterToken.sol
-
-デプロイ完了したアドレスを
-util/addresses/splatter_goerli.tsにコピーする。
 ```
