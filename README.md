@@ -35,10 +35,12 @@ npm install
 ### TypeScript and Solidity
 ```
 1. RemixIDEをローカルフォルダに繋ぐ
-　remixd -s ./generative/ -u https://remix.ethereum.org/
-2. RemixIDEでsplatter.tsを編集して図形を作る
+　　・remixd -s ./generative/ -u https://remix.ethereum.org/
+  　・RemixIDEのFILE EXPLORERでlocalhostを選ぶ
+2. RemixIDEでsrc/generative/splatter.tsを編集して図形を作る
 　　・確認 http://localhost:8080/splatter
-3. RemixIDEでSplatterProvider.solに移植する
+3. RemixIDEでcontract/contructs/SplatterProvider.solに移植する
+　　・ビルドエラー確認のみ。IDEでは動作は確認できない。
 ```
 
 ## Deployment
@@ -78,6 +80,6 @@ npx hardhat run ./scripts/deploy_splatter.ts
 
 ### Mint to OpenSea(testnet)
 ```
-2. テスト用OpenSeaにミントする
+1. テスト用OpenSeaにミントする
 　・Mintボタン： http://localhost:8080/splatterYos
 ```
