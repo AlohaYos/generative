@@ -37,7 +37,7 @@ npx hardhat run ./scripts/deploy_splatter.ts
 
 ### 手動デプロイ手順
 ```
-1. Reactサーバを起動
+1. Vue/TypeScriptサービスを起動
 cd generative
 yarn run serve
 
@@ -47,7 +47,7 @@ remixd -s ./generative/ -u https://remix.ethereum.org/
 3. RemixIDEでsplatter.tsを編集して図形を作る
 　・確認 http://localhost:8080/splatter
 4. RemixIDEでSplatterProvider.solに移植する
-5. goerliテストネットワークに以下の順にデプロイする
+5. goerliテストネットワークに以下の順にデプロイする（上記Deploymentの手動版）
 　・SplatterProvider.sol
 　・SplatterArtProvider.sol
 　・SplatterToken.sol
