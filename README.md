@@ -107,5 +107,5 @@ npx hardhat run ./scripts/deploy_splatter.ts --network goerli
 ### Mint to OpenSea(testnet)
 ```
 1. Mint onto OpenSea testnet
-　・Mint button： http://localhost:8080/splatterYos
+　・Mint button： http://localhost:8080/splatter
 ```
