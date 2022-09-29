@@ -33,6 +33,9 @@ npm install
 ### Deployment
 ```
 npx hardhat run ./scripts/deploy_splatter.ts
+・deploy_splatter.ts を "--network goerli" オプション付きで走らせる
+・splatter_goerli.ts というファイルが contract/cache に生成される
+・それを utils/addresses にコピー
 ```
 
 ### 手動デプロイ手順
